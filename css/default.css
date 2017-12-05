@@ -57,7 +57,8 @@ time, mark, audio, video {
    vertical-align: baseline;
    background: transparent;
 }
-.titre{
+
+.banner-text h3{
 	color:red;
 }
 
