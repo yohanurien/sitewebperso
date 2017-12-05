@@ -57,6 +57,9 @@ time, mark, audio, video {
    vertical-align: baseline;
    background: transparent;
 }
+.titre{
+	color:red;
+}
 
 article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section {
