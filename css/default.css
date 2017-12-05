@@ -57,7 +57,7 @@ time, mark, audio, video {
    vertical-align: baseline;
    background: transparent;
 }
-h3-titre{
+h3.titre{
 	margin: 0;
    	padding: 0;
    	border: 0;
@@ -65,7 +65,7 @@ h3-titre{
    	font-size: 100%;
    	vertical-align: baseline;
    	background: transparent;
-	font-color: white;
+	color: white;
 }
 
 article,aside,details,figcaption,figure,
