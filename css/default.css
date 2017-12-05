@@ -57,6 +57,16 @@ time, mark, audio, video {
    vertical-align: baseline;
    background: transparent;
 }
+h3-titre{
+	margin: 0;
+   	padding: 0;
+   	border: 0;
+   	outline: 0;
+   	font-size: 100%;
+   	vertical-align: baseline;
+   	background: transparent;
+	font-color: white;
+}
 
 article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section {
