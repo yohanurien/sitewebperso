@@ -180,48 +180,36 @@
 
 /* Countdown ------------------------------------------------------------------------------------------------------*/
 
-const countdown = new Date("May 7, 2021");
+var target_date = new Date().getTime() + (1000*3600*48); // set the countdown date
+var days, hours, minutes, seconds; // variables for time units
 
-function getRemainingTime(endtime) {
-  const milliseconds = Date.parse(endtime) - Date.parse(new Date());
-  const seconds = Math.floor( (milliseconds/1000) % 60 );
-  const minutes = Math.floor( (milliseconds/1000/60) % 60 );
-  const hours = Math.floor( (milliseconds/(1000*60*60)) % 24 );
-  const days = Math.floor( milliseconds/(1000*60*60*24) );
+var countdown = document.getElementById("tiles"); // get tag element
 
-  return {
-    'total': milliseconds,
-    'seconds': seconds,
-    'minutes': minutes,
-    'hours': hours,
-    'days': days,
-  };
-}
-  
-function initClock(id, endtime) {
-  const counter = document.getElementById(id);
-  const daysItem = counter.querySelector('.js-countdown-days');
-  const hoursItem = counter.querySelector('.js-countdown-hours');
-  const minutesItem = counter.querySelector('.js-countdown-minutes');
-  const secondsItem = counter.querySelector('.js-countdown-seconds');
+getCountdown();
 
-  function updateClock() {
-    const time = getRemainingTime(endtime);
+setInterval(function () { getCountdown(); }, 1000);
 
-    daysItem.innerHTML = time.days;
-    hoursItem.innerHTML = ('0' + time.hours).slice(-2);
-    minutesItem.innerHTML = ('0' + time.minutes).slice(-2);
-    secondsItem.innerHTML = ('0' + time.seconds).slice(-2);
+function getCountdown(){
 
-    if (time.total <= 0) {
-      clearInterval(timeinterval);
-    }
-  }
+	// find the amount of "seconds" between now and target
+	var current_date = new Date().getTime();
+	var seconds_left = (target_date - current_date) / 1000;
 
-  updateClock();
-  const timeinterval = setInterval(updateClock, 1000);
+	days = pad( parseInt(seconds_left / 86400) );
+	seconds_left = seconds_left % 86400;
+		 
+	hours = pad( parseInt(seconds_left / 3600) );
+	seconds_left = seconds_left % 3600;
+		  
+	minutes = pad( parseInt(seconds_left / 60) );
+	seconds = pad( parseInt( seconds_left % 60 ) );
+
+	// format countdown string + set tag value
+	countdown.innerHTML = "<span>" + days + "</span><span>" + hours + "</span><span>" + minutes + "</span><span>" + seconds + "</span>"; 
 }
 
-initClock('js-countdown', countdown);
+function pad(n) {
+	return (n < 10 ? '0' : '') + n;
+}
 
 
